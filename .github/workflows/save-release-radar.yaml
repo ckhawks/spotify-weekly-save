@@ -21,7 +21,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Execute Python script
-        run: python main.py
+        run: python release-radar.py
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}

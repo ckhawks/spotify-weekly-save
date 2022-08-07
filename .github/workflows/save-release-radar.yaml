@@ -1,0 +1,30 @@
+name: Save Release Radar songs
+
+on:
+  schedule:
+  - cron: '30 6 * * 5'
+  workflow_dispatch:
+
+jobs:
+  execute-cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code	
+        uses: actions/checkout@v2
+
+      - name: Setup Python Environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+
+      - name: Execute Python script
+        run: python main.py
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+          RELEASE_RADAR_ID: ${{ secrets.RELEASE_RADAR_ID }}
+          SAVE_TO_ID: ${{ secrets.SAVE_TO_ID }}

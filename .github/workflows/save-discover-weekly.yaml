@@ -1,4 +1,4 @@
-name: Save songs
+name: Save Discovery Weekly songs
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Execute Python script
-        run: python main.py
+        run: python discover-weekly.py
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
